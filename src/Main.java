@@ -42,10 +42,9 @@ public class Main {
 //f. Получить Ф. И. О. всех сотрудников (вывести в консоль)
 
         Employer anton = new Employer("Ivanov", "Ivan", "Ivanovich", "Department №1", 120000);
-        // System.out.println(anton.getId());
+        System.out.println(anton.getId());
 
         Employer nikolay = new Employer("Kolilov", "Nokolay", "Nicolaevich", "Department #2", 130000);
-        //System.out.println(nikolay.getId());
+        System.out.println(nikolay.getId());
     }
-    static int id()
 }
