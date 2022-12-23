@@ -39,13 +39,13 @@ public class Main {
 //d. Найти сотрудника с максимальной зарплатой.
 //e. Подсчитать среднее значение зарплат (можно использовать для этого
 //метод из пункта b).
-//f. Получить Ф. И. О. всех сотрудников (вывести в консоль).
-
+//f. Получить Ф. И. О. всех сотрудников (вывести в консоль)
 
         Employer anton = new Employer("Ivanov", "Ivan", "Ivanovich", "Department №1", 120000);
-        System.out.println(anton.getId());
+        // System.out.println(anton.getId());
 
         Employer nikolay = new Employer("Kolilov", "Nokolay", "Nicolaevich", "Department #2", 130000);
-        System.out.println(nikolay.getId());
+        //System.out.println(nikolay.getId());
     }
+    static int id()
 }

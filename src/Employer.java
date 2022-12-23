@@ -2,9 +2,9 @@ public class Employer {
     private final String surnameEmployer;
     private final String nameEmployer;
     private final String patronymicEmployer;
-    private final String employeeDepartment;
+    private final String employeeDepartment; // потенциально переделать в int и в разделе ниже поменяй если будешь тут крутить
     private final int salaryEmployer;
-    public static int id; //мб public и Employer.id ниже
+    private static int id; //мб public и Employer.id ниже
 
     public Employer(String surname, String name, String patronymic, String department, int salary) {
         this.surnameEmployer = surname;
@@ -12,14 +12,39 @@ public class Employer {
         this.patronymicEmployer = patronymic;
         this.employeeDepartment = department;
         this.salaryEmployer = salary;
-        //добавить счётчик
+        //id не должно быть в конструкторе
     }
 
-    public int getId() {
-        while (id = 0) {
-            id =1;
+
+/* пока не понятно куда этот счётчик отправить да и может быть его нужно будет ещё допилить)
+    public static int getId() {
+        while (id == 0) {
+            id = 1;
             return 0;
-        } return id++;
+        }
+        return id++;
+    }
+ */
+
+
+    public String getSurnameEmployer() {
+        return surnameEmployer;
+    }
+
+    public String getNameEmployer() {
+        return nameEmployer;
+    }
+
+    public String getPatronymicEmployer() {
+        return patronymicEmployer;
+    }
+
+    public String getEmployeeDepartment() {
+        return employeeDepartment;
+    }
+
+    public int getSalaryEmployer() {
+        return salaryEmployer;
     }
 }
 
