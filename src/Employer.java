@@ -1,34 +1,26 @@
 public class Employer {
-    private final String surnameEmployer;
-    private final String nameEmployer;
-    private final String patronymicEmployer;
-    private final String employeeDepartment; // потенциально переделать в int и в разделе ниже поменяй если будешь тут крутить
+    private final String fullNameEmployer;
+    private final int employeeDepartment; // потенциально переделать в int и в разделе ниже поменяй если будешь тут крутить
     private final int salaryEmployer;
-    public static int id; //мб public и Employer.id ниже
+    private final int id;
+    private static int counterId;
 
-    public Employer(String surname, String name, String patronymic, String department, int salary) {
-        this.surnameEmployer = surname;
-        this.nameEmployer = name;
-        this.patronymicEmployer = patronymic;
+    public Employer(String fullName, int department, int salary) {
+        if (department <1 || department>5) {
+            throw new IllegalArgumentException("Отдела с таким номером не существует. Доступные отделы 1-5");
+        }
+        this.fullNameEmployer=fullName;
         this.employeeDepartment = department;
         this.salaryEmployer = salary;
-        this.id = id++;
+        this.id = counterId++;
     }
 
 
-    public String getSurnameEmployer() {
-        return surnameEmployer;
+    public String getFullNameEmployer() {
+        return fullNameEmployer;
     }
 
-    public String getNameEmployer() {
-        return nameEmployer;
-    }
-
-    public String getPatronymicEmployer() {
-        return patronymicEmployer;
-    }
-
-    public String getEmployeeDepartment() {
+    public int getEmployeeDepartment() {
         return employeeDepartment;
     }
 
@@ -36,8 +28,12 @@ public class Employer {
         return salaryEmployer;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
+    }
+    @Override
+    public String toString() {
+        return fullNameEmployer + " работает в отделе №" + employeeDepartment + " зарплата " + salaryEmployer;
     }
 }
 
