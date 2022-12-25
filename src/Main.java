@@ -21,9 +21,7 @@ public class Main {
         System.out.println("averageSalary() = " + averageSalary());
         pintAllFIO();
         System.out.println("toFindDepartmentMaxSalary(6) = " + toFindDepartmentMaxSalary(6));
-        System.out.println("calculateAllSalary() = " + calculateAllSalary());
-        increaseSalary(10);
-        System.out.println("calculateAllSalary() = " + calculateAllSalary());
+        System.out.println("toFindDepartmentMinSalary(6) = " + toFindDepartmentMinSalary(6));
 
     }
 
@@ -56,6 +54,7 @@ public class Main {
         }
         return min;
     }
+
     public static int maxSalary() {
         int max = Integer.MIN_VALUE;
         for (Employees Employees : employees) {
@@ -67,16 +66,19 @@ public class Main {
         }
         return max;
     }
+
     public static int averageSalary() {
         int average = 0;
-        int i =0;
+        int i = 0;
         for (Employees Employees : employees) {
             if (employees != null) {
                 average += Employees.getSalaryEmployee();
                 i++;
             }
-        } return average / i;
+        }
+        return average / i;
     }
+
     public static void pintAllFIO() {
         for (Employees Employees : employees) {
             if (employees != null) {
@@ -86,10 +88,10 @@ public class Main {
     }
 
     public static void increaseSalary(int percent) {
-        double increasingCoefficient = (double) percent/100+1;
-        for (Employees Employees: employees) {
+        double increasingCoefficient = (double) percent / 100 + 1;
+        for (Employees Employees : employees) {
             if (employees != null) {
-                Employees.setSalaryEmployee((int) (Employees.getSalaryEmployee()*increasingCoefficient));
+                Employees.setSalaryEmployee((int) (Employees.getSalaryEmployee() * increasingCoefficient));
             }
         }
     }
@@ -104,15 +106,17 @@ public class Main {
     //e. Проиндексировать зарплату всех сотрудников отдела на процент,
     //который приходит в качестве параметра.
     //f. Напечатать всех сотрудников отдела (все данные, кроме отдела).
-    public static int checkDepartment(int number) {
-        if (number < 1 || number > 5) {
+    public static void checkDepartment(int department) {
+        if (department < 1 || department > 5) {
             throw new IllegalArgumentException("Отдела с таким номером не существует. Доступные отделы 1-5");
-        } return number;
+        }
     }
+
     public static int toFindDepartmentMinSalary(int department) {
+        checkDepartment(department);
         int min = Integer.MAX_VALUE;
         for (Employees Employees : employees) {
-            if (employees != null && Employees.getEmployeeDepartment() == checkDepartment(department)) {
+            if (employees != null && Employees.getEmployeeDepartment() == department) {
                 if (min >= Employees.getSalaryEmployee()) {
                     min = Employees.getSalaryEmployee();
                 }
@@ -123,6 +127,7 @@ public class Main {
 
 
     public static int toFindDepartmentMaxSalary(int department) {
+        checkDep(department);
         int max = Integer.MIN_VALUE;
         for (Employees Employees : employees) {
             if (employees != null) {
@@ -132,6 +137,12 @@ public class Main {
             }
         }
         return max;
+    }
+
+    public static void checkDep(int department) {
+        if (department <= 0 || department > 5) {
+            throw new IllegalArgumentException("Такого отдела не существует.");
+        }
     }
 }
 
