@@ -6,17 +6,19 @@ public class Employees {
     private static int counterId;
 
     public Employees(String fullName, int department, int salary) {
-            if (department < 1 || department > 5) {
-                throw new IllegalArgumentException("Отдела с таким номером не существует. Доступные отделы 1-5");
-            } else {
+            checkDepartment(department);
             this.fullNameEmployee =fullName;
             this.employeeDepartment = department;
             this.salaryEmployee = salary;
             this.id = counterId++;
         }
+
+
+    public static void checkDepartment(int department) {
+        if (department <= 0 || department > 5) {
+            throw new IllegalArgumentException("Отдела с таким номером не существует. Доступные отделы 1-5");
+        }
     }
-
-
     public String getFullNameEmployee() {
         return fullNameEmployee;
     }
@@ -27,6 +29,10 @@ public class Employees {
 
     public int getSalaryEmployee() {
         return salaryEmployee;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setSalaryEmployee(int money) {
