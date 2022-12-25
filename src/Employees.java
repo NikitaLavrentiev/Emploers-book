@@ -1,6 +1,6 @@
 public class Employees {
     private final String fullNameEmployee;
-    private final int employeeDepartment;
+    private int employeeDepartment;
     private int salaryEmployee;
     private final int id;
     private static int counterId;
@@ -37,6 +37,10 @@ public class Employees {
 
     public void setSalaryEmployee(int money) {
         salaryEmployee = money;
+    }
+
+    public void setEmployeeDepartment(int department) {
+        employeeDepartment = department;
     }
 
     @Override
