@@ -3,9 +3,9 @@ public class EmployeesBook {
     private final Employee[] EMPLOYEES = new Employee[EMPLOYEES_SIZE];
 
     public void printAllEmployers() {
-        if (EMPLOYEES != null) {
             for (Employee Employee : EMPLOYEES) {
-                System.out.println(Employee);
+                if (EMPLOYEES != null) {
+                    System.out.println(Employee);
             }
         }
     }
@@ -122,7 +122,7 @@ public class EmployeesBook {
                 i++;
             }
         }
-        return average / i;
+        return average / (float) i;
     }
 
     public void pintAllFIODepartment(int department) {
