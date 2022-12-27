@@ -1,12 +1,12 @@
-public class Employees {
+public class Employee {
     private final String fullNameEmployee;
     private int employeeDepartment;
     private int salaryEmployee;
     private final int id;
     private static int counterId;
-    private static final Integer DEPARTMENT_SIZE = 5;
+    public static final Integer DEPARTMENT_SIZE = 5;
 
-    public Employees(String fullName, int department, int salary) {
+    public Employee(String fullName, int department, int salary) {
         checkDepartment(department);
         this.fullNameEmployee = fullName;
         this.employeeDepartment = department;

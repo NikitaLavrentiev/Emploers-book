@@ -1,171 +1,173 @@
-import java.security.PrivilegedAction;
-
 public class EmployeesBook {
     private static final Integer EMPLOYEES_SIZE = 10;
-    private final Employees[] employees = new Employees[EMPLOYEES_SIZE];
+    private final Employee[] employee = new Employee[EMPLOYEES_SIZE];
 
     public void printAllEmployers() {
-        if (employees != null) {
-            for (Employees Employees : employees) {
-                System.out.println(Employees);
+        if (employee != null) {
+            for (Employee Employee : employee) {
+                System.out.println(Employee);
             }
         }
     }
 
     public int calculateAllSalary() {
         int sum = 0;
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                sum += Employees.getSalaryEmployee();
+        for (Employee Employee : employee) {
+            if (employee != null) {
+                sum += Employee.getSalaryEmployee();
             }
         }
         return sum;
     }
 
-    public int minSalary() {
+    public Employee minSalary() {
         int min = Integer.MAX_VALUE;
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                if (min >= Employees.getSalaryEmployee()) {
-                    min = Employees.getSalaryEmployee();
-                }
+        Employee target = employee[0];
+        for (Employee Employee : employee) {
+            if (employee != null && min >= Employee.getSalaryEmployee()) {
+                    min = Employee.getSalaryEmployee();
+                    target = Employee;
             }
         }
-        return min;
+        return target;
     }
 
-    public int maxSalary() {
+    public Employee maxSalary() {
         int max = Integer.MIN_VALUE;
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                if (max <= Employees.getSalaryEmployee()) {
-                    max = Employees.getSalaryEmployee();
-                }
+        Employee target = employee[0];
+        for (Employee Employee : employee) {
+            if (employee != null && max <= Employee.getSalaryEmployee()) {
+                    max = Employee.getSalaryEmployee();
+                    target = Employee;
             }
         }
-        return max;
+        return target;
     }
 
-    public float averageSalary() {
-        return (calculateAllSalary() / (float) employees.length);
+    public float averageSalary() { //возможно this лишне
+        int average = 0;
+        float i = 0f;
+        for (Employee Employee : employee) {
+            if ( employee != null) {
+                average += Employee.getSalaryEmployee();
+                i++;
+            }
+        }
+        return average / (float) i;
     }
 
     public void pintAllFIO() {
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                System.out.println(Employees.getFullNameEmployee());
+        for (Employee Employee : employee) {
+            if (employee != null) {
+                System.out.println(Employee.getFullNameEmployee());
             }
         }
     }
 
     public void increaseSalary(int percent) {
         double increasingCoefficient = (double) percent / 100 + 1;
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                Employees.setSalaryEmployee((int) (Employees.getSalaryEmployee() * increasingCoefficient));
+        for (Employee Employee : employee) {
+            if (employee != null) {
+                Employee.setSalaryEmployee((int) (Employee.getSalaryEmployee() * increasingCoefficient));
 
             }
         }
     }
 
-    public int toFindDepartmentMinSalary(int department) {
-        Employees.checkDepartment(department);
+    public Employee toFindDepartmentMinSalary(int department) {
+        Employee.checkDepartment(department);
         int min = Integer.MAX_VALUE;
-        for (Employees Employees : employees) {
-            if (employees != null && Employees.getEmployeeDepartment() == department) {
-                if (min >= Employees.getSalaryEmployee()) {
-                    min = Employees.getSalaryEmployee();
+        Employee target = null;
+        for (Employee Employee : employee) {
+            if (employee != null && Employee.getEmployeeDepartment() == department && min >= Employee.getSalaryEmployee()) {
+                    min = Employee.getSalaryEmployee();
+                    target = Employee;
                 }
-            }
         }
-        return min;
+        return target;
     }
 
 
-    public int toFindDepartmentMaxSalary(int department) {
-        Employees.checkDepartment(department);
+    public Employee toFindDepartmentMaxSalary(int department) {
+        Employee.checkDepartment(department);
         int max = Integer.MIN_VALUE;
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                if (max <= Employees.getSalaryEmployee()) {
-                    max = Employees.getSalaryEmployee();
-                }
+         Employee target = null;
+        for (Employee Employee : employee) {
+            if (employee != null && max <= Employee.getSalaryEmployee()) {
+                    max = Employee.getSalaryEmployee();
+                    target = Employee;
             }
         }
-        return max;
+        return target;
     }
 
     public int toFindDepartmentTotalCost(int department) {
-        Employees.checkDepartment(department);
+        Employee.checkDepartment(department);
         int sum = 0;
-        for (Employees Employees : employees) {
-            if (employees != null && Employees.getEmployeeDepartment() == department) {
-                sum += Employees.getSalaryEmployee();
+        for (Employee Employee : employee) {
+            if (employee != null && Employee.getEmployeeDepartment() == department) {
+                sum += Employee.getSalaryEmployee();
             }
         }
         return sum;
     }
 
-    public int averageSalaryInDepartment(int department) {
-        Employees.checkDepartment(department);
+    public float averageSalaryInDepartment(int department) {
+        Employee.checkDepartment(department);
         int average = 0;
-        int i = 0;
-        for (Employees Employees : employees) {
-            if (Employees.getEmployeeDepartment() == department) {
-                average += Employees.getSalaryEmployee();
+        float  i = 0f;
+        for (Employee Employee : employee) {
+            if ( employee != null && Employee.getEmployeeDepartment() == department) {
+                average += Employee.getSalaryEmployee();
                 i++;
             }
         }
-        return average / i;
+        return  average / (float)i;
     }
 
     public void pintAllFIODepartment(int department) {
-        Employees.checkDepartment(department);
+        Employee.checkDepartment(department);
         {
-            for (Employees Employees : employees) {
-                if (Employees.getEmployeeDepartment() == department) {
-                    System.out.println(Employees.getFullNameEmployee());
+            for (Employee Employee : employee) {
+                if (Employee.getEmployeeDepartment() == department) {
+                    System.out.println(Employee.getFullNameEmployee());
                 }
             }
         }
     }
 
     public void increaseSalaryDepartment(int percent, int department) {
-        Employees.checkDepartment(department);
+        Employee.checkDepartment(department);
         double increasingCoefficient = (double) percent / 100 + 1;
-        for (Employees Employees : employees) {
-            if (Employees.getEmployeeDepartment() == department) {
-                Employees.setSalaryEmployee((int) (Employees.getSalaryEmployee() * increasingCoefficient));
+        for (Employee Employee : employee) {
+            if (employee != null && Employee.getEmployeeDepartment() == department) {
+                Employee.setSalaryEmployee((int) (Employee.getSalaryEmployee() * increasingCoefficient));
             }
         }
     }
 
     public void printEmployeeWithSalaryBelow(int salary) {
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                if (salary >= Employees.getSalaryEmployee()) {
-                    System.out.println("id " + Employees.getId() + " сотрудник " + Employees.getFullNameEmployee() + " зарплата " + Employees.getSalaryEmployee());
-                }
+        for (Employee Employee : employee) {
+            if (employee != null && salary >= Employee.getSalaryEmployee()) {
+                    System.out.println("id " + Employee.getId() + " сотрудник " + Employee.getFullNameEmployee() + " зарплата " + Employee.getSalaryEmployee());
             }
         }
     }
 
     public void printEmployeeWithSalaryAbove(int salary) {
-        for (Employees Employees : employees) {
-            if (employees != null) {
-                if (salary <= Employees.getSalaryEmployee()) {
-                    System.out.println("id " + Employees.getId() + " сотрудник " + Employees.getFullNameEmployee() + " зарплата " + Employees.getSalaryEmployee());
-                }
+        for (Employee Employee : employee) {
+            if (employee != null && salary <= Employee.getSalaryEmployee()) {
+                    System.out.println("id " + Employee.getId() + " сотрудник " + Employee.getFullNameEmployee() + " зарплата " + Employee.getSalaryEmployee());
             }
         }
     }
 
-    public void addEmployee(String fIO, int department, int salary) {
+    public void addEmployee(String fullName, int department, int salary) {
         boolean check = false;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] == null) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] == null) {
                 check = true;
-                employees[i] = new Employees(fIO, department, salary);
+                employee[i] = new Employee(fullName, department, salary);
                 return;
             }
         }
@@ -176,11 +178,11 @@ public class EmployeesBook {
 
     public void fireEmployeeById(int id) {
         boolean check = false;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getId() == id) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i].getId() == id) {
                 check = true;
-                System.out.println(employees[i].getId() + "  уволен.");
-                employees[i] = null;
+                System.out.println(employee[i].getId() + "  уволен.");
+                employee[i] = null;
                 return;
             }
         }
@@ -191,11 +193,11 @@ public class EmployeesBook {
 
     public void fireEmployeeByName(String fullName) {
         boolean check = false;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getFullNameEmployee().equals(fullName)) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i].getFullNameEmployee().equals(fullName)) {
                 check = true;
-                System.out.println(employees[i] + " - уволен.");
-                employees[i] = null;
+                System.out.println(employee[i] + " - уволен.");
+                employee[i] = null;
                 return;
             }
         }
@@ -204,43 +206,41 @@ public class EmployeesBook {
         }
     }
 
-    public int toChangeSalaryForOneEmployee(String fullName, int newSalary) {
+    public void toChangeSalaryForOneEmployee(String fullName, int newSalary) {
         boolean check = false;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getFullNameEmployee().equals(fullName)) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i].getFullNameEmployee().equals(fullName)) {
                 check = true;
                 System.out.println("Зарплата для " + fullName + " повышена.");
-                employees[i].setSalaryEmployee(newSalary);
+                employee[i].setSalaryEmployee(newSalary);
             }
         }
         if (!check) {
             System.out.println("Сотрудник не найден");
         }
-        return newSalary;
     }
 
-    public int toChangeDepartmentForOneEmployee(String fullName, int newDepartment) {
-        Employees.checkDepartment(newDepartment);
+    public void toChangeDepartmentForOneEmployee(String fullName, int newDepartment) {
+        Employee.checkDepartment(newDepartment);
         boolean check = false;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getFullNameEmployee().equals(fullName)) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i].getFullNameEmployee().equals(fullName)) {
                 check = true;
                 System.out.println("Отдел для " + fullName + " изменен.");
-                employees[i].setEmployeeDepartment(newDepartment);
+                employee[i].setEmployeeDepartment(newDepartment);
             }
         }
         if (!check) {
             System.out.println("Сотрудник не найден");
         }
-        return newDepartment;
     }
 
     public void printDepartmentAndFullNameOfAllEmployers() {
-        for (int j = 1; j <= 5; j++) {
+        for (int j = 1; j <= Employee.DEPARTMENT_SIZE; j++) {
             System.out.println("Отдел №" + j + ": ");
-            for (int i = 0; i < employees.length; i++) {
-                if (employees[i].getEmployeeDepartment() == j) {
-                    System.out.println(employees[i].getFullNameEmployee());
+            for (int i = 0; i < employee.length; i++) {
+                if (employee[i].getEmployeeDepartment() == j) {
+                    System.out.println(employee[i].getFullNameEmployee());
                 }
             }
             System.out.println();
